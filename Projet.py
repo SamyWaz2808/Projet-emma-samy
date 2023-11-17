@@ -36,27 +36,24 @@ def affichage (m):
     
 #Ex 2.3
 
-def update_p(letter,p):
+def update_p(letter,p,m):
     if letter=="z":
-        if not(p["y"]==0):
+        if (p["y"]>0):
             p["y"]-=1
     if letter=="q":
-        if not(p["x"]==0):
+        if (p["x"]>0):
             p["x"]-=1
     if letter=="s":
-        if not(p["y"]==3):
+        if (p["y"]<len(m)-1):
             p["y"]+=1
     if letter=="d":
-        if not(p["x"]==4):
+        if (p["x"]<len(m[0])-1):
             p["x"]+=1
     return p
-
-affichage(display_map_and_char(map, dico, personnage))
+map_perso=display_map_and_char(map, dico, personnage)
+affichage(map_perso)
 
 while True: 
-    personnage = update_p(input("z,q,s ou d?"), personnage)
-    affichage(display_map_and_char(map, dico, personnage))
-
-
-
-
+    personnage = update_p(input("z,q,s ou d?"), personnage,map_perso)
+    map_perso=display_map_and_char(map, dico, personnage)
+    affichage(map_perso)
