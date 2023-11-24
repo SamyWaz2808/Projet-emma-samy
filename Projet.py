@@ -55,7 +55,7 @@ def create_objects(nombre_objet,m):
     while len(s)<nombre_objet:
         n=randint(0,4)
         k=randint(0,3)
-        if m[k][n]!='#' :
+        if m[k][n]!='#' and ((n,k) not in s):
             s.append((n,k))
     return s
 
