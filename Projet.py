@@ -21,7 +21,6 @@ def generate_map(size_map,proportion_wall):
             walls_in_map.append((a,b))
     for i,j in walls_in_map:
         L[j][i]=1
-    
     return L
             
     
@@ -51,7 +50,12 @@ dico = {0:' ',1:'#'}
 def create_perso(depart):
     return {"char": Fore.YELLOW + Style.BRIGHT +"☺" + Style.RESET_ALL, "x": depart[0], "y": depart[1], "score":0}
 
-personnage = create_perso((3, 2))
+a=randint(0,len(map[0])-1)
+b=randint(0,len(map)-1)
+while map[b][a]==1:
+    a=randint(0,len(map[0])-1)
+    b=randint(0,len(map)-1)
+personnage = create_perso((a, b))
 #print(personnage)
 
 def create_map_and_char(m,d,p):
@@ -84,8 +88,8 @@ def update_p(letter,p,m):
 def create_objects(nombre_objet,m):
     s=[]
     while len(s)<nombre_objet:
-        n=randint(0,4)
-        k=randint(0,3)
+        n=randint(0,len(m[0])-1)
+        k=randint(0,len(m)-1)
         if m[k][n]!='#' and ((n,k) not in s) and m[k][n]!='☺':
             s.append((n,k))
     return s
@@ -110,7 +114,7 @@ def update_objects(p,objects):
          objects.remove((p['x'],p['y']))
 
 map_perso=create_map_and_char(map, dico, personnage)
-objects=create_objects(4,map_perso)
+objects=create_objects(6,map_perso)
 map_perso_objects=create_map_char_and_objects(map, dico, personnage,objects)
 display_map_and_char_and_objects(map_perso_objects)
 
