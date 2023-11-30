@@ -169,7 +169,7 @@ while True:
     finish=create_finish(map_perso_objects)
     map_perso_objects_finish=create_map_char_and_objects_and_finish(map, dico, personnage,objects,finish)
     display_map_and_char_and_objects_and_finish(map_perso_objects_finish)
-    print("LEVEL : %d" %level)
+    print("LEVEL : %d sur 10" %level)
     if level>1:
         print(Fore.GREEN + Style.BRIGHT+ "Prochain niveau!" + Style.RESET_ALL)
     while True: 
