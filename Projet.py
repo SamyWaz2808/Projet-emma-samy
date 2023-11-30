@@ -8,14 +8,6 @@ Created on Thu Nov 30 18:47:14 2023
 from random import randint
 from colorama import Back,Fore,Style
 
-def delete_all_walls(m, pos):
-    x, y = pos
-    for i in range(max(0, x - 1), min(len(m[0]), x + 2)):
-        for j in range(max(0, y - 1), min(len(m), y + 2)):
-            if 0 <= i < len(m[0]) and 0 <= j < len(m):
-                m[j][i] = 0
-
-
 
 def generate_map(size_map,proportion_wall):
     L=[[0]*size_map[0] for i in range(size_map[1])]
@@ -119,8 +111,6 @@ def update_p(letter, p, m):
         p["y"] += 1
     if letter == "d" and p["x"] < len(m[0]) - 1 and m[p["y"]][p["x"] + 1] != Fore.WHITE + Back.WHITE + Style.BRIGHT + '#' + Style.RESET_ALL:
         p["x"] += 1
-    if letter == "e":
-        delete_all_walls(m, (p["x"], p["y"]))
     return p
 
 def create_objects(nombre_objet,m):
